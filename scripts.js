@@ -35,8 +35,7 @@ function ajouterBombes(genererGrille, nv_dificulter){
         for(let i =0; i < rows; i++){
             for(let j = 0; j < colonne; j++){
     
-                if(tab[i][j] != bomb){
-                    if(tab[i-1][j-1] != bomb
+                if(tab[i][j] != bomb
                         && i-1 >= 0 && j-1 >=0
                         && i-1 < nbColonnes -1 && j-1 < nbLignes -1 ){
                         tab[i-1][j-1] = bomb;
