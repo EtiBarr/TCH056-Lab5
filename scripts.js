@@ -1,22 +1,29 @@
 function genererGrille(nbLignes, nbColonnes){
-    let tblContainer = document.getElementById("grille-jeu");
-    let tableau = document.createElement("table");
-    let i, j;
-    for(i= 0; i<nbLignes; i++){
-        let ligne = document.createElement("tr");
-        for(j=0; j<nbColonnes; j++){
-            let colonne = document.createElement("td");
-            colonne.innerHTML = 0;
-            ligne.appendChild(colonne);
+
+    let grille = []
+
+    for(let i=0; i<= nbLignes; i++){
+
+        // Initialiser la nouvelle ligne
+        let nouvelleLigne = [];
+        
+        // Construire la nouvelle ligne
+        for(let j=0; j<nbColonnes; j++){
+            nouvelleLigne.push(0);
         }
-        tblContainer.appendChild(ligne);
+
+        // Ajouter la nouvelle ligne au tableau
+        grille.push(nouvelleLigne)
+
     }
-    tblContainer.appendChild(tableau);
+
+    return grille;
+
 }
 
+console.log(genererGrille(5,5));
 
-
-function ajouterBombes(genererGrille, nv_dificulter){
+function ajouterBombes(rows, colonne, nv_dificulter){
 
     const bomb = "\u{1F4A3}";
 
@@ -51,12 +58,13 @@ function ajouterBombes(genererGrille, nv_dificulter){
                 }
             }
         }
+        
     }
     
     
 
 
-function remplirGrille (nbColonnes, nbLignes){
+function remplirGrille (nbColonnes, nbLignes, nv_dificulter){
 
     const bomb = "\u{1F4A3}";
     
@@ -110,101 +118,65 @@ function remplirGrille (nbColonnes, nbLignes){
                 }
 
             }
-            
-            switch(tab[i][j]){
-                case 0:
-                document.getElementsByTagNameNS(td).style.color = 'lightgray';
-                break;
-
-                case 1:
-                document.getElementsByTagNameNS(td).style.color = 'blue';
-                break; 
-
-                case 2:
-                document.getElementsByTagNameNS(td).style.color = 'green';
-                break;
-
-                case 3:
-                document.getElementsByTagNameNS(td).style.color = 'red';
-                break;
-
-                case 4:
-                document.getElementsByTagNameNS(td).style.color = 'purple';
-                break;
-
-                case 5:
-                document.getElementsByTagNameNS(td).style.color = 'maroon';
-                break;
-
-                case 6:
-                document.getElementsByTagNameNS(td).style.color = 'turquoise';
-                break;
-
-                case 7:
-                document.getElementsByTagNameNS(td).style.color = 'black';
-                break;
-
-                case 8:
-                document.getElementsByTagNameNS(td).style.color = 'darkgreen';
-                break; 
-            }
 
         }
     }
 
 }
 
-let grid = [];
-
-function startGame(difficulty) {
-    let gridSize, bombCount;
-
-    switch (difficulty) {
-        case 'easy':
-            gridSize = 5;
-            bombCount = 5;
-            break;
-        case 'medium':
-            gridSize = 10;
-            bombCount = 30;
-            break;
-        case 'hard':
-            gridSize = 20;
-            bombCount = 140;
-            break;
-        default:
-            return;
-    }
-
-    generateGrid(gridSize, gridSize, bombCount);
-    displayGrid();
-}
-
-function generateGrid(nbRows, nbCols, bombCount) {
-    // Initialize an empty grid
-    grid = Array.from({ length: nbRows }, () => Array(nbCols).fill(0));
-
-    // Place bombs randomly
-    for (let i = 0; i < bombCount; i++) {
-        let row, col;
-        do {
-            row = Math.floor(Math.random() * nbRows);
-            col = Math.floor(Math.random() * nbCols);
-        } while (grid[row][col] === 'B');
-        grid[row][col] = 'B';
-    }
-}
-
-function displayGrid() {
-    const gridContainer = document.getElementById('grid-container');
+function afficherGrille(grille, nv_dificulter) {
+    let gridContainer = $('grid-container');
+    let tableau = getElementsByTagNameNS("table");
+    let lignes = getElementsByTagNameNS("tr");
     gridContainer.innerHTML = '';
+    
+    genererGrille(nbLignes, nbColonnes);
+    ajouterBombes(grille, nv_dificulter); 
+    remplirGrille(grille, nv_dificulter); 
+    
 
-    grid.forEach((row, rowIndex) => {
-        row.forEach((cell, colIndex) => {
-            const cellElement = document.createElement('div');
-            cellElement.className = 'cell';
-            cellElement.textContent = cell === 'B' ? '💣' : '';
-            gridContainer.appendChild(cellElement);
-        });
-    });
+    for(let i=0; i<nbLignes; i++){
+        let cellule = $("<div></div>");
+        for(let j=0; j<nbColonnes; j++){
+            switch(grille[i][j]){
+                case 0:
+                cellule.css('color', 'lightgray');
+                break;
+
+                case 1:
+                cellule.css('color', 'blue');
+                break; 
+
+                case 2:
+                cellule.css('color', 'green');
+                break;
+
+                case 3:
+                cellule.css('color', 'red');
+                break;
+
+                case 4:
+                cellule.css('color', 'purple');
+                break;
+
+                case 5:
+                cellule.css('color', 'maroon');
+                break;
+
+                case 6:
+                cellule.css('color', 'turquoise');
+                break;
+
+                case 7:
+                cellule.css('color', 'black');
+                break;
+
+                case 8:
+                cellule.css('color', 'darkgreen');
+                break; 
+            }
+            
+            gridContainer.appendChild(cellule);
+        }
+    }
 }

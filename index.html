@@ -11,14 +11,13 @@
     <title>Lab 5</title>
 </head>
 <body>
-
    
     
     <div class="grille-jeu">
         <div>
-            <button onclick="startGame('easy')">Easy</button>
-            <button onclick="startGame('medium')">Medium</button>
-            <button onclick="startGame('hard')">Hard</button>
+            <button onclick="nv_difficulter(0)" onclick="genererGrille(5,5)">Easy</button>
+            <button onclick="nv_difficulter(1)" onclick="afficherGrille(10,10)">Medium</button>
+            <button onclick="nv_difficulter(2)" onclick="afficherGrille(20,20)">Hard</button>
         </div>
         <div id="grid-container"></div>
         <script src="scripts.js"></script>
