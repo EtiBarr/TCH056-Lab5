@@ -12,46 +12,16 @@
 </head>
 <body>
 
-    <button id="boutton" onclick="genererGrille(5,5)" onClick="nv_dificulter(0)">Facile</button>
-    <button id="boutton" onclick="genererGrille(10,10)" onClick="nv_dificulter(1)">Moyen</button>
-    <button id="boutton" onclick="genererGrille(20,20)" onClick="nv_dificulter(2)">Difficile</button>
-
+   
     
     <div class="grille-jeu">
-        <!---
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-        <div class="grille"></div>
-            -->
-            <table>
-                <tr>
-                    <td></td>
-                    
-                </tr>
-
-            </table>
+        <div>
+            <button onclick="startGame('easy')">Easy</button>
+            <button onclick="startGame('medium')">Medium</button>
+            <button onclick="startGame('hard')">Hard</button>
+        </div>
+        <div id="grid-container"></div>
+        <script src="scripts.js"></script>
             
       </div>
     

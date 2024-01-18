@@ -153,3 +153,58 @@ function remplirGrille (nbColonnes, nbLignes){
     }
 
 }
+
+let grid = [];
+
+function startGame(difficulty) {
+    let gridSize, bombCount;
+
+    switch (difficulty) {
+        case 'easy':
+            gridSize = 5;
+            bombCount = 5;
+            break;
+        case 'medium':
+            gridSize = 10;
+            bombCount = 30;
+            break;
+        case 'hard':
+            gridSize = 20;
+            bombCount = 140;
+            break;
+        default:
+            return;
+    }
+
+    generateGrid(gridSize, gridSize, bombCount);
+    displayGrid();
+}
+
+function generateGrid(nbRows, nbCols, bombCount) {
+    // Initialize an empty grid
+    grid = Array.from({ length: nbRows }, () => Array(nbCols).fill(0));
+
+    // Place bombs randomly
+    for (let i = 0; i < bombCount; i++) {
+        let row, col;
+        do {
+            row = Math.floor(Math.random() * nbRows);
+            col = Math.floor(Math.random() * nbCols);
+        } while (grid[row][col] === 'B');
+        grid[row][col] = 'B';
+    }
+}
+
+function displayGrid() {
+    const gridContainer = document.getElementById('grid-container');
+    gridContainer.innerHTML = '';
+
+    grid.forEach((row, rowIndex) => {
+        row.forEach((cell, colIndex) => {
+            const cellElement = document.createElement('div');
+            cellElement.className = 'cell';
+            cellElement.textContent = cell === 'B' ? '💣' : '';
+            gridContainer.appendChild(cellElement);
+        });
+    });
+}
