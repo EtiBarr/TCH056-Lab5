@@ -19,10 +19,6 @@ function genererGrille(nbLignes, nbColonnes){
 }
 
 
-function genererGrille(nbLignes, nbColonnes){
-
-
-}
 
 function ajouterBombes(genererGrille, nv_dificulter){
 
