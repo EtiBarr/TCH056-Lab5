@@ -19,7 +19,7 @@ function genererGrille(nbLignes, nbColonnes){
 function ajouterBombes(genererGrille, nv_dificulter){
 
     let nb_bomb = 0;
-    
+
     if(nv_dificulter === 0){
         nb_bomb = 5;
     }else if(nv_dificulter === 1){
@@ -29,7 +29,8 @@ function ajouterBombes(genererGrille, nv_dificulter){
     }
 
     let c_bomb = 0;
-    while (c_bomb < nb_bombe){
+
+    while (c_bomb <= nb_bomb){
 
         for(let i =0; i < rows; i++){
             for(let j = 0; j < colonne; j++){
@@ -46,7 +47,7 @@ function ajouterBombes(genererGrille, nv_dificulter){
         }
     }
     
-}
+
 
 function remplirGrille (nbColonnes, nbLignes){
 
@@ -62,42 +63,42 @@ function remplirGrille (nbColonnes, nbLignes){
                     tab[i-1][j-1]+= 1;
                 }
                 if( tab[i][j-1] != bomb
-                    && i-1 >= 0 && j-1 >=0
-                    && i-1 < nbColonnes -1 && j-1 < nbLignes -1){
+                    && i >= 0 && j-1 >=0
+                    && i < nbColonnes -1 && j-1 < nbLignes -1){
                     tab[i][j-1] += 1;
                 }
                 if( tab[i+1][j-1] != bomb
-                    && i-1 >= 0 && j-1 >=0
-                    && i-1 < nbColonnes -1 && j-1 < nbLignes -1){
+                    && i+1 >= 0 && j-1 >=0
+                    && i+1 < nbColonnes -1 && j-1 < nbLignes -1){
                     tab[i+1][j-1] += 1;
                 }
 
 
                 if(  tab[i-1][j] != bomb
-                    && i-1 >= 0 && j-1 >=0
-                    && i-1 < nbColonnes -1 && j-1 < nbLignes -1){
+                    && i-1 >= 0 && j >=0
+                    && i-1 < nbColonnes -1 && j < nbLignes -1){
                     tab[i-1][j] += 1;
                 }
                 if( tab[i+1][j] != bomb
-                    && i-1 >= 0 && j-1 >=0
-                    && i-1 < nbColonnes -1 && j-1 < nbLignes -1){
+                    && i+1 >= 0 && j >=0
+                    && i+1 < nbColonnes -1 && j < nbLignes -1){
                     tab[i+1][j] += 1;
                 }
 
 
                 if( tab[i-1][j+1] != bomb
-                    && i-1 >= 0 && j-1 >=0
-                    && i-1 < nbColonnes -1 && j-1 < nbLignes -1){
+                    && i-1 >= 0 && j+1 >=0
+                    && i-1 < nbColonnes -1 && j+1 < nbLignes -1){
                     tab[i-1][j+1] += 1;
                 }
                 if( tab[i][j+1] != bomb
-                    && i-1 >= 0 && j-1 >=0
-                    && i-1 < nbColonnes -1 && j-1 < nbLignes -1){
+                    && i >= 0 && j+1 >=0
+                    && i < nbColonnes -1 && j+1 < nbLignes -1){
                     tab[i][j+1] += 1;
                 }
                 if( tab[i+1][j+1] != bomb
-                    && i-1 >= 0 && j-1 >=0
-                    && i-1 < nbColonnes -1 && j-1 < nbLignes -1){
+                    && i+1 >= 0 && j+1 >=0
+                    && i+1 < nbColonnes -1 && j+1 < nbLignes -1){
                     tab[i+1][j+1] +=1;
                 }
 
