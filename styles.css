@@ -1,0 +1,30 @@
+.flex-container{
+    display: flex;
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    align-items: space-between;
+    justify-content: flex-start;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    margin-top: 2%;
+    flex-wrap: wrap;
+}
+
+.grille{
+    display: flex;
+    border: 1px solid black;
+    width: 98px;
+
+}
+
+body{
+    text-align: center;
+    background-color: grey;
+}
+
+button{
+    width: 166.6666px;
+    
+}
