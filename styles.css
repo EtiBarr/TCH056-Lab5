@@ -1,4 +1,4 @@
-.flex-container{
+.table-container{
     display: flex;
     width: 500px;
     height: 500px;
@@ -12,12 +12,14 @@
     flex-wrap: wrap;
 }
 
+/*
 .grille{
     display: flex;
     border: 1px solid black;
     width: 98px;
-
 }
+*/
+
 
 body{
     text-align: center;
@@ -26,5 +28,14 @@ body{
 
 button{
     width: 166.6666px;
+    
+}
+
+table, th, td{
+    border: 1px solid black;
+}
+
+table{
+    border-collapse: collapse;
     
 }
