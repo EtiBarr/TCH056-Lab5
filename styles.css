@@ -18,6 +18,12 @@
     width: 98px;
 
 }
+.biggrille{
+    display: flex;
+    border: 1px solid black;
+    width: 48px;
+
+}
 
 body{
     text-align: center;
