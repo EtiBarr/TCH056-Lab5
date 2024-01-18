@@ -18,6 +18,8 @@ function genererGrille(nbLignes, nbColonnes){
 
 function ajouterBombes(genererGrille, nv_dificulter){
 
+    const bomb = "\u{1F4A3}";
+
     let nb_bomb = 0;
 
     if(nv_dificulter === 0){
@@ -30,21 +32,27 @@ function ajouterBombes(genererGrille, nv_dificulter){
 
     let c_bomb = 0;
 
-    while (c_bomb <= nb_bomb){
+    for(c_bomb of nb_bomb){
 
         for(let i =0; i < rows; i++){
             for(let j = 0; j < colonne; j++){
     
-                if(tab[i][j] != bomb
+                let rando = Math.floor(Math.random() * 10);
+                if(rando === 2){
+                    if(c_bomb <= nb_bomb){
+                    if(tab[i][j] != bomb
                         && i-1 >= 0 && j-1 >=0
                         && i-1 < nbColonnes -1 && j-1 < nbLignes -1 ){
-                        tab[i-1][j-1] = bomb;
-                        c_bomb++;
+                            tab[i-1][j-1] = bomb;
+                            c_bomb++;
+                            }
+                        }
                     }
                 }
             }
         }
     }
+    
     
 
 
