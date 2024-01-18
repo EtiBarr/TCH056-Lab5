@@ -102,7 +102,46 @@ function remplirGrille (nbColonnes, nbLignes){
                 }
 
             }
+            
+            switch(tab[i][j]){
+                case 0:
+                document.getElementsByTagNameNS(td).style.color = 'lightgray';
+                break;
+
+                case 1:
+                document.getElementsByTagNameNS(td).style.color = 'blue';
+                break; 
+
+                case 2:
+                document.getElementsByTagNameNS(td).style.color = 'green';
+                break;
+
+                case 3:
+                document.getElementsByTagNameNS(td).style.color = 'red';
+                break;
+
+                case 4:
+                document.getElementsByTagNameNS(td).style.color = 'purple';
+                break;
+
+                case 5:
+                document.getElementsByTagNameNS(td).style.color = 'maroon';
+                break;
+
+                case 6:
+                document.getElementsByTagNameNS(td).style.color = 'turquoise';
+                break;
+
+                case 7:
+                document.getElementsByTagNameNS(td).style.color = 'black';
+                break;
+
+                case 8:
+                document.getElementsByTagNameNS(td).style.color = 'darkgreen';
+                break; 
+            }
 
         }
     }
+
 }
