@@ -18,13 +18,34 @@ function genererGrille(nbLignes, nbColonnes){
 
 function ajouterBombes(genererGrille, nv_dificulter){
 
-    for(let i =0; i < rows; i++){
-        for(let j = 0; j < close; j++){
-
-            tab[i][j] = "\u{1F4A3}";
-        }
+    let nb_bomb = 0;
+    
+    if(nv_dificulter === 0){
+        nb_bomb = 5;
+    }else if(nv_dificulter === 1){
+        nb_bomb = 30;
+    }else if(nv_difficulter === 2){
+        nb_bomb =140;
     }
 
+    let c_bomb = 0;
+    while (c_bomb < nb_bombe){
+
+        for(let i =0; i < rows; i++){
+            for(let j = 0; j < colonne; j++){
+    
+                if(tab[i][j] != bomb){
+                    if(tab[i-1][j-1] != bomb
+                        && i-1 >= 0 && j-1 >=0
+                        && i-1 < nbColonnes -1 && j-1 < nbLignes -1 ){
+                        tab[i-1][j-1] = bomb;
+                        c_bomb++;
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
 function remplirGrille (nbColonnes, nbLignes){
@@ -51,6 +72,7 @@ function remplirGrille (nbColonnes, nbLignes){
                     tab[i+1][j-1] += 1;
                 }
 
+
                 if(  tab[i-1][j] != bomb
                     && i-1 >= 0 && j-1 >=0
                     && i-1 < nbColonnes -1 && j-1 < nbLignes -1){
@@ -61,6 +83,7 @@ function remplirGrille (nbColonnes, nbLignes){
                     && i-1 < nbColonnes -1 && j-1 < nbLignes -1){
                     tab[i+1][j] += 1;
                 }
+
 
                 if( tab[i-1][j+1] != bomb
                     && i-1 >= 0 && j-1 >=0
