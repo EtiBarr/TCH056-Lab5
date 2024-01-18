@@ -1,17 +1,15 @@
 function genererGrille(nbLignes, nbColonnes){
-    let difficulty = document.getElementById("boutton");
+    let tblContainer = document.getElementById("grille-jeu");
     let tableau = document.createElement("table");
     let i, j;
     for(i= 0; i<nbLignes; i++){
+        let ligne = document.createElement("tr");
         for(j=0; j<nbColonnes; j++){
-            let ligne = tableau.insertRow(i);
-            let colonne = ligne.insertCell(j);
-            colonne.textContent= `${i}-${j}`;
+            let colonne = document.createElement("td");
+            colonne.innerHTML = 0;
+            ligne.appendChild(colonne);
         }
+        tblContainer.appendChild(ligne);
     }
-
-    let nbPixels = 500/nbColonnes;
-    let tabcontainer = document.getElementsByClassName("table-container");
-    gridContainer.innerHTML = "table-container";
-    gridContainer.appendChild(table);
+    tblContainer.appendChild(tableeau);
 }
