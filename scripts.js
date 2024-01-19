@@ -56,8 +56,6 @@ function ajouterBombes(grille, difficulte) {
   let nbLignes = grille.length;
   let nbColonnes = grille.length;
 
-  //remplirGrille(grille, nbLignes, nbColonnes);
-
   afficherGrille(grille);
 
 }
