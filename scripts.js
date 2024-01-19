@@ -1,3 +1,151 @@
+let grille = [];
+const bombe = "💣";
+
+function genererGrille(nbLignes, nbColonnes) {
+
+    let tailleGrille = nbColonnes * nbLignes;
+    let gridWidth = nbColonnes;
+
+    if (tailleGrille === 25) {
+        difficulte = 'facile';
+      } else if (tailleGrille === 100) {
+        difficulte = 'moyen';
+      } else if (tailleGrille === 400) {
+        difficulte = 'difficile';
+      }
+
+  $('html').css('--gridWidth', gridWidth);
+
+      for(let i = 0; i < nbLignes; i++){
+        const row = [];
+        for(let j = 0; j< nbColonnes; j++){
+            row.push(0);
+        }
+        grille.push(row);
+      }
+
+  ajouterBombes(grille, difficulte);
+
+}  
+
+function ajouterBombes(grille, difficulte) {
+
+    let nbBombe;
+
+    if (difficulte === 'facile') {
+        nbBombe = 5;
+      } else if (difficulte === 'moyen') {
+        nbBombe = 30;
+      } else if (difficulte === 'difficile') {
+        nbBombe = 140;
+      } 
+ 
+    let bombCount = 0; 
+    while(bombCount < nbBombe ){
+   
+        let i = Math.floor(Math.random() * grille.length);
+        let j = Math.floor(Math.random() * grille[0].length);
+
+        if (grille[i][j] === bombe) {
+        } else {
+            grille[i][j] = bombe;
+        bombCount++;
+        }
+  } 
+ 
+  let nbLignes = grille.length;
+  let nbColonnes = grille.length;
+
+  //remplirGrille(grille, nbLignes, nbColonnes);
+
+  afficherGrille(grille);
+
+}
+
+/* 
+function remplirGrille (grille, nbLignes , nbColonnes){
+
+    
+    for(let i =0; i < nbLignes; i++){
+        for(let j = 0; j < nbColonnes; j++){
+
+            if(grille[i][j] === bombe){
+                if(grille[i-1][j-1] != bombe
+                    && i-1 >= 0 && j-1 >=0
+                    && i-1 < nbLignes && j-1 < nbColonnes  ){
+                        grille[i-1][j-1]+= 1;
+                }
+                if( grille[i][j-1] != bombe
+                    && i >= 0 && j-1 >=0
+                    && i < nbLignes && j-1 < nbColonnes ){
+                        grille[i][j-1] += 1;
+                }
+                if( grille[i+1][j-1] != bombe
+                    && i+1 >= 0 && j-1 >=0
+                    && i+1 <nbLignes  && j-1 <nbColonnes ){
+                        grille[i+1][j-1] += 1;
+                }
+
+
+                if(  grille[i-1][j] != bombe
+                    && i-1 >= 0 && j >=0
+                    && i-1 <nbLignes  && j < nbColonnes ){
+                        grille[i-1][j] += 1;
+                }
+                if( grille[i+1][j] != bombe
+                    && i+1 >= 0 && j >=0
+                    && i+1 <nbLignes  && j < nbColonnes ){
+                        grille[i+1][j] += 1;
+                }
+
+
+                if( grille[i-1][j+1] != bombe
+                    && i-1 >= 0 && j+1 >=0
+                    && i-1 < nbLignes && j+1 < nbColonnes ){
+                        grille[i-1][j+1] += 1;
+                }
+                if( grille[i][j+1] != bombe
+                    && i >= 0 && j+1 >=0
+                    && i <nbLignes  && j+1 < nbColonnes ){
+                        grille[i][j+1] += 1;
+                }
+                if( grille[i+1][j+1] != bombe
+                    && i+1 >= 0 && j+1 >=0
+                    && i+1 < nbLignes  && j+1 <nbColonnes ){
+                        grille[i+1][j+1] +=1;
+                }
+
+            }
+
+        }
+    }
+    afficherGrille();
+
+}
+*/
+ 
+ 
+function afficherGrille(grille) {
+    
+  const gameContainer = document.getElementById('mine-box');
+  gameContainer.innerHTML = ''; 
+
+  for (let i = 0; i < grille.length; i++) {
+    for (let j = 0; j < grille[i].length; j++) {
+      const cell = document.createElement('div');
+      cell.classList.add('cell');
+      cell.textContent = grille[i][j];
+      gameContainer.appendChild(cell);
+    }
+  }
+}
+
+
+
+
+
+
+/*
 function genererGrille(nbLignes, nbColonnes){
 
     let grille = []
@@ -180,3 +328,5 @@ function afficherGrille(grille, nv_dificulter) {
         }
     }
 }
+
+*/
